@@ -1,0 +1,78 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all var(--transition-speed);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  
+  // 主要按钮
+  &.primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--button-shadow);
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--button-hover-shadow);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: var(--button-active-shadow);
+    }
+  }
+  
+  // 次要按钮
+  &.secondary {
+    background: var(--card-bg);
+    color: var(--text);
+    box-shadow: var(--button-shadow);
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--button-hover-shadow);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: var(--button-active-shadow);
+    }
+  }
+  
+  // 图标按钮
+  &.icon-button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  // 禁用状态
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// 卡片样式
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed);
+  
+  &:hover {
+    box-shadow: var(--card-hover-shadow);
+  }
+} 

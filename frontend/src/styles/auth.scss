@@ -1,0 +1,128 @@
+// 认证页面共享样式
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--background-color), var(--primary-color));
+  
+  .auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    
+    .auth-header {
+      text-align: center;
+      margin-bottom: 40px;
+      
+      .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      
+      h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: var(--text-color);
+      }
+      
+      .subtitle {
+        font-size: 16px;
+        color: var(--text-color);
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+    
+    .error {
+      color: #ff4d4f;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+  
+  .glass-effect-light {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    
+    input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text-color);
+      font-size: 16px;
+      
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    
+    .prefix {
+      font-size: 16px;
+      color: var(--text-color);
+      margin-right: 8px;
+      opacity: 0.8;
+    }
+  }
+  
+  .verify-input {
+    .verify-btn {
+      padding: 8px 16px;
+      background: var(--primary-color);
+      border: none;
+      border-radius: var(--border-radius-sm);
+      color: white;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 14px;
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  .submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+} 

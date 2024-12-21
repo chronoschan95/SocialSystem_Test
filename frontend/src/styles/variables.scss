@@ -1,0 +1,59 @@
+:root {
+  // 浅色主题
+  --light-background: linear-gradient(135deg, #fff5f5 0%, #ffe9e9 100%);
+  --light-card-bg: rgba(255, 255, 255, 0.95);
+  --light-text: #1a1a1a;
+  --light-text-secondary: #4a4a4a;
+  --light-border: rgba(255, 182, 182, 0.3);
+  --light-primary: #ff8a8a;
+  --light-secondary: #ff9b9b;
+  --light-hover: rgba(255, 182, 182, 0.15);
+  
+  // 深色主题
+  --dark-background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  --dark-card-bg: rgba(42, 42, 42, 0.95);
+  --dark-text: #ffffff;
+  --dark-text-secondary: #e0e0e0;
+  --dark-border: rgba(255, 155, 155, 0.3);
+  --dark-primary: #ff9b9b;
+  --dark-secondary: #ffb6b6;
+  --dark-hover: rgba(255, 155, 155, 0.15);
+  
+  // 按钮样式
+  --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --button-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --button-active-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  // 卡片样式
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  
+  // 通用变量
+  --transition-speed: 0.3s;
+  --border-radius-lg: 20px;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+}
+
+// 应用主题变量
+.light-mode {
+  --background: var(--light-background);
+  --card-bg: var(--light-card-bg);
+  --text: var(--light-text);
+  --text-secondary: var(--light-text-secondary);
+  --border: var(--light-border);
+  --primary: var(--light-primary);
+  --secondary: var(--light-secondary);
+  --hover: var(--light-hover);
+}
+
+.dark-mode {
+  --background: var(--dark-background);
+  --card-bg: var(--dark-card-bg);
+  --text: var(--dark-text);
+  --text-secondary: var(--dark-text-secondary);
+  --border: var(--dark-border);
+  --primary: var(--dark-primary);
+  --secondary: var(--dark-secondary);
+  --hover: var(--dark-hover);
+} 
