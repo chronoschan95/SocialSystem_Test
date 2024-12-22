@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Bell, Star } from 'lucide-react';
+import { Calendar, Bell, Star, Clock } from 'lucide-react';
 
 const NewsPage = () => {
     const [news] = useState([

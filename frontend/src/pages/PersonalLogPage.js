@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Plus, Clock, ChevronRight } from 'lucide-react';
+import { Calendar, Plus, Clock, ChevronRight, Edit } from 'lucide-react';
 
 const PersonalLog = () => {
     const [logs, setLogs] = useState([
