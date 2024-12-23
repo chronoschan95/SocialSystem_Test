@@ -1,5 +1,8 @@
-import React from 'react';
-import { Layout, Users, Newspaper, Moon, User, Mail, Key } from 'lucide-react';
+import React, { useState } from 'react';
+import { Layout, Users, Newspaper, Moon, Sun, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 // Mock data for preview
 const mockUsers = [
@@ -18,30 +21,122 @@ const mockNews = [
 ];
 
 const AdminPreview = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const { isDarkMode, toggleDarkMode } = useTheme();
+  
+  // Local state
+  const [currentSection, setCurrentSection] = useState('users');
+  const [users, setUsers] = useState(mockUsers);
+  const [news, setNews] = useState(mockNews);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // User management handlers
+  const handleRoleChange = (userId, newRole) => {
+    setUsers(users.map(user => 
+      user.id === userId ? { ...user, role: newRole } : user
+    ));
+  };
+
+  const handleDeleteUser = (userId) => {
+    if (window.confirm('确定要删除此用户吗？')) {
+      setUsers(users.filter(user => user.id !== userId));
+    }
+  };
+
+  // News management handlers
+  const handleDeleteNews = (newsId) => {
+    if (window.confirm('确定要删除此新闻吗？')) {
+      setNews(news.filter(item => item.id !== newsId));
+    }
+  };
+
+  const handleEditNews = (newsId) => {
+    // Mock edit functionality
+    alert('打开编辑界面: ' + newsId);
+  };
+
+  // Logout handler
+  const handleLogout = () => {
+    if (window.confirm('确定要退出登录吗？')) {
+      logout();
+      navigate('/auth');
+    }
+  };
+
+  // 修改主题切换处理函数
+  const handleThemeToggle = () => {
+    toggleDarkMode();
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
-    <div className="min-h-screen bg-pink-50">
+    <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'dark bg-gray-900' : 'bg-pink-50'}`}>
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-sm p-4">
+      <nav className={`transition-colors duration-200 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm p-4`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Layout className="w-6 h-6 text-pink-500" />
-            <span className="text-xl font-semibold text-pink-600">管理后台</span>
+            <span className={`text-xl font-semibold ${isDarkMode ? 'text-pink-400' : 'text-pink-600'}`}>
+              管理后台
+            </span>
           </div>
           <div className="flex items-center gap-4">
-            <Moon className="w-5 h-5 text-gray-600" />
+            {/* 主题切换按钮 */}
+            <button
+              onClick={handleThemeToggle}
+              className={`p-2 rounded-full transition-all duration-200 ${
+                isDarkMode 
+                  ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600' 
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            
+            {/* 登出按钮 */}
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-red-500 hover:text-red-600 transition-colors"
+            >
+              <LogOut className="w-5 h-5" />
+              退出登录
+            </button>
           </div>
         </div>
       </nav>
 
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-64 bg-white h-screen shadow-sm p-4">
+        <div className={`w-64 transition-colors duration-200 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} h-screen shadow-sm p-4`}>
           <div className="space-y-2">
-            <button className="w-full flex items-center gap-3 text-left px-4 py-2 rounded-lg bg-pink-50 text-pink-600">
+            <button
+              onClick={() => setCurrentSection('users')}
+              className={`w-full flex items-center gap-3 text-left px-4 py-2 rounded-lg transition-colors ${
+                currentSection === 'users'
+                  ? isDarkMode
+                    ? 'bg-pink-900/50 text-pink-400'
+                    : 'bg-pink-50 text-pink-600'
+                  : isDarkMode
+                    ? 'text-gray-300 hover:bg-gray-700'
+                    : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
               <Users className="w-5 h-5" />
               用户管理
             </button>
-            <button className="w-full flex items-center gap-3 text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+            <button
+              onClick={() => setCurrentSection('news')}
+              className={`w-full flex items-center gap-3 text-left px-4 py-2 rounded-lg transition-colors ${
+                currentSection === 'news'
+                  ? isDarkMode
+                    ? 'bg-pink-900/50 text-pink-400'
+                    : 'bg-pink-50 text-pink-600'
+                  : isDarkMode
+                    ? 'text-gray-300 hover:bg-gray-700'
+                    : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
               <Newspaper className="w-5 h-5" />
               新闻管理
             </button>
@@ -69,7 +164,7 @@ const AdminPreview = () => {
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">用户名</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">邮箱</th>
-                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">角色</th>
+                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">��色</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">操作</th>
                   </tr>
                 </thead>

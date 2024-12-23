@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 添加全局过渡效果 */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* 暗色模式过渡 */
+.dark {
+  @apply transition-colors duration-200;
+}
+
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900 transition-colors duration-200;
