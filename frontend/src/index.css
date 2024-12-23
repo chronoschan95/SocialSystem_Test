@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-200;
+  }
+
+  /* 黑暗模式全局样式 */
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  /* 输入框样式 */
+  input, textarea {
+    @apply bg-white dark:bg-gray-800 dark:text-white border-gray-300 dark:border-gray-700;
+  }
+
+  /* 卡片样式 */
+  .card {
+    @apply bg-white dark:bg-gray-800 shadow-sm;
+  }
+
+  /* 按钮样式 */
+  .btn {
+    @apply bg-pink-600 hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-800 text-white;
+  }
+
+  /* 导航栏样式 */
+  .nav-item {
+    @apply text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400;
+  }
+
+  /* 侧边栏样式 */
+  .sidebar {
+    @apply bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700;
+  }
+}
+
+/* 自定义组件样式 */
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent;
+  }
+
+  .card-container {
+    @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mb-4;
+  }
+}
