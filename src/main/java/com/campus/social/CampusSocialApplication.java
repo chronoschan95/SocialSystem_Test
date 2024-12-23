@@ -54,6 +54,35 @@ public class CampusSocialApplication {
     }
 
     private static void startAllServices() {
+        System.out.println("正在清理并重新构建项目...");
+        try {
+            // 清理并重新构建
+            ProcessBuilder mvnClean = new ProcessBuilder("mvn", "clean");
+            mvnClean.inheritIO();
+            Process cleanProcess = mvnClean.start();
+            cleanProcess.waitFor();
+
+            // 清理本地依赖缓存
+            ProcessBuilder mvnPurge = new ProcessBuilder("mvn", "dependency:purge-local-repository");
+            mvnPurge.inheritIO();
+            Process purgeProcess = mvnPurge.start();
+            purgeProcess.waitFor();
+
+            // 重新构建
+            ProcessBuilder mvnPackage = new ProcessBuilder("mvn", "package", "-DskipTests");
+            mvnPackage.inheritIO();
+            Process packageProcess = mvnPackage.start();
+            packageProcess.waitFor();
+
+            if (packageProcess.exitValue() != 0) {
+                System.err.println("构建失败，请检查错误信息");
+                return;
+            }
+        } catch (Exception e) {
+            System.err.println("构建过程出错: " + e.getMessage());
+            return;
+        }
+
         boolean frontendRunning = isPortInUse(FRONTEND_PORT);
         boolean backendRunning = isPortInUse(BACKEND_PORT);
 

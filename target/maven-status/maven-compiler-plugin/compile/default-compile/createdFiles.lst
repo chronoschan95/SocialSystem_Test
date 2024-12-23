@@ -1,5 +1,4 @@
 com/campus/social/repository/UserRepository.class
-com/campus/social/launcher/ApplicationLauncher.class
 com/campus/social/CampusSocialApplication.class
 com/campus/social/controller/NewsController.class
 com/campus/social/controller/UpdatesController.class
