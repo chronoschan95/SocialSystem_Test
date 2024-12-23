@@ -6,7 +6,9 @@ com/campus/social/controller/UpdatesController.class
 com/campus/social/controller/AuthController.class
 com/campus/social/dto/ErrorResponse.class
 com/campus/social/config/WebConfig.class
+com/campus/social/service/UserManagementService.class
 com/campus/social/controller/PersonalLogController.class
+com/campus/social/controller/UserManagementController.class
 com/campus/social/dto/LoginResponse.class
 com/campus/social/controller/TopicsController.class
 com/campus/social/model/User.class

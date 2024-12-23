@@ -21,6 +21,9 @@ public class User {
     @Column(nullable = false)
     private boolean isAdmin = false;
     
+    @Column(nullable = false)
+    private boolean deleted = false;
+    
     // Getters and Setters
     public Long getId() {
         return id;
@@ -60,5 +63,13 @@ public class User {
     
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+    
+    public boolean isDeleted() {
+        return deleted;
+    }
+    
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

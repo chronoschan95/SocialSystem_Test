@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Users, Newspaper, Moon, Sun, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -27,20 +27,56 @@ const AdminPreview = () => {
   
   // Local state
   const [currentSection, setCurrentSection] = useState('users');
-  const [users, setUsers] = useState(mockUsers);
+  const [users, setUsers] = useState([]);
   const [news, setNews] = useState(mockNews);
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    // 获取用户列表
+    fetch('http://localhost:8080/api/admin/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+      .catch(err => console.error(err));
+  }, []);
+
   // User management handlers
-  const handleRoleChange = (userId, newRole) => {
-    setUsers(users.map(user => 
-      user.id === userId ? { ...user, role: newRole } : user
-    ));
+  const handleRoleChange = async (userId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/admin/users/${userId}/role`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.ok) {
+        // 刷新用户列表
+        const updatedUsers = users.map(user => 
+          user.id === userId ? { ...user, admin: !user.admin } : user
+        );
+        setUsers(updatedUsers);
+      }
+    } catch (error) {
+      console.error('Error updating user role:', error);
+    }
   };
 
-  const handleDeleteUser = (userId) => {
-    if (window.confirm('确定要删除此用户吗？')) {
-      setUsers(users.filter(user => user.id !== userId));
+  const handleDeleteUser = async (userId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/admin/users/${userId}/status`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.ok) {
+        // 刷新用户列表
+        const updatedUsers = users.map(user => 
+          user.id === userId ? { ...user, deleted: !user.deleted } : user
+        );
+        setUsers(updatedUsers);
+      }
+    } catch (error) {
+      console.error('Error updating user status:', error);
     }
   };
 
@@ -164,23 +200,34 @@ const AdminPreview = () => {
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">用户名</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">邮箱</th>
-                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">��色</th>
+                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">角色</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">操作</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {mockUsers.map(user => (
-                    <tr key={user.id}>
-                      <td className="px-6 py-4 text-gray-800">{user.username}</td>
-                      <td className="px-6 py-4 text-gray-800">{user.email}</td>
+                  {users.map(user => (
+                    <tr key={user.id} className={user.deleted ? 'line-through text-red-500' : ''}>
+                      <td className="px-6 py-4">{user.username}</td>
+                      <td className="px-6 py-4">{user.email}</td>
                       <td className="px-6 py-4">
-                        <select className="rounded-lg border border-gray-200 px-3 py-1">
-                          <option value="user">普通用户</option>
-                          <option value="admin">管理员</option>
-                        </select>
+                        <button
+                          onClick={() => handleRoleChange(user.id)}
+                          className={`px-3 py-1 rounded-lg ${
+                            user.admin ? 'bg-pink-100 text-pink-800' : 'bg-gray-100 text-gray-800'
+                          }`}
+                          disabled={user.email === '1018296826@qq.com'}
+                        >
+                          {user.admin ? '管理员' : '普通用户'}
+                        </button>
                       </td>
                       <td className="px-6 py-4">
-                        <button className="text-red-500 hover:text-red-600">删除</button>
+                        <button
+                          onClick={() => handleDeleteUser(user.id)}
+                          className={`text-${user.deleted ? 'green' : 'red'}-500 hover:text-${user.deleted ? 'green' : 'red'}-600`}
+                          disabled={user.email === '1018296826@qq.com'}
+                        >
+                          {user.deleted ? '恢复' : '删除'}
+                        </button>
                       </td>
                     </tr>
                   ))}

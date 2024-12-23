@@ -7,7 +7,9 @@
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/dto/ErrorResponse.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/repository/UserRepository.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/dto/LoginResponse.java
+/Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/controller/UserManagementController.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/controller/NewsController.java
+/Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/service/UserManagementService.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/model/User.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/CampusSocialApplication.java
 /Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/src/main/java/com/campus/social/config/WebConfig.java

@@ -59,7 +59,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.campus.social.launcher.ApplicationLauncher</mainClass>
+                    <mainClass>com.campus.social.CampusSocialApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

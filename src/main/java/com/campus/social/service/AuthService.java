@@ -40,9 +40,21 @@ public class AuthService {
     }
 
     public ResponseEntity<?> register(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null) {
-            return ResponseEntity.badRequest().body("Email already exists");
+        // 检查邮箱是否已存在
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null) {
+            return ResponseEntity.badRequest().body("该邮箱已被注册");
         }
+        
+        // 设置为普通用户
+        user.setAdmin(false);
+        user.setDeleted(false);
+        
+        // 特殊处理管理员账号
+        if ("1018296826@qq.com".equals(user.getEmail())) {
+            user.setAdmin(true);
+        }
+        
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }

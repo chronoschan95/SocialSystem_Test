@@ -31,6 +31,12 @@ mvn clean package -DskipTests
 
 # 检查构建是否成功
 if [ $? -eq 0 ]; then
+    # 检查 JAR 文件是否存在
+    if [ ! -f "target/social-0.0.1-SNAPSHOT.jar" ]; then
+        echo "Error: JAR file not found!"
+        exit 1
+    fi
+
     echo "Build successful, starting application..."
     # 使用 nohup 后台运行前端服务
     cd frontend
@@ -40,8 +46,13 @@ if [ $? -eq 0 ]; then
     # 等待前端服务启动
     sleep 5
     
-    # 启动后端服务
-    java -jar target/social-0.0.1-SNAPSHOT.jar
+    # 启动后端服务，修改日志输出方式
+    echo "Starting backend service..."
+    # 方案1：直接在控制台显示输出
+    java -jar target/social-0.0.1-SNAPSHOT.jar --debug
+
+    # 或者方案2：同时输出到文件和控制台
+    # java -jar target/social-0.0.1-SNAPSHOT.jar --debug 2>&1 | tee backend.log
 else
     echo "Build failed, please check the errors above"
     exit 1
