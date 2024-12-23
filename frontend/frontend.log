@@ -339,3 +339,272 @@ src/pages/AuthPage.js
   Line 5:10:  'authAPI' is defined but never used  no-unused-vars
 
 webpack compiled with 1 warning
+Compiling...
+Failed to compile.
+
+Module not found: Error: Can't resolve '../TimeDisplay' in '/Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/frontend/src/components/layout'
+WARNING in [eslint] 
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+ERROR in ./src/components/layout/Layout.js 10:0-41
+Module not found: Error: Can't resolve '../TimeDisplay' in '/Users/chronoschan/Documents/SophomoreYear/JAVA/ExperimentX/CSys/V3/frontend/src/components/layout'
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/components/layout/Layout.js
+  Line 9:9:  'navigate' is assigned a value but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/TimeDisplay.js
+  Line 1:8:   'React' is defined but never used         no-unused-vars
+  Line 1:17:  'useState' is defined but never used      no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used     no-unused-vars
+  Line 2:10:  'ChevronLeft' is defined but never used   no-unused-vars
+  Line 2:23:  'ChevronRight' is defined but never used  no-unused-vars
+
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AdminPreview.js
+  Line 32:10:  'searchQuery' is assigned a value but never used       no-unused-vars
+  Line 32:23:  'setSearchQuery' is assigned a value but never used    no-unused-vars
+  Line 35:9:   'handleRoleChange' is assigned a value but never used  no-unused-vars
+  Line 41:9:   'handleDeleteUser' is assigned a value but never used  no-unused-vars
+  Line 48:9:   'handleDeleteNews' is assigned a value but never used  no-unused-vars
+  Line 54:9:   'handleEditNews' is assigned a value but never used    no-unused-vars
+
+src/pages/AuthPage.js
+  Line 5:10:  'authAPI' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning

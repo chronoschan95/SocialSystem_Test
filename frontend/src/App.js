@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
-import AppLayout from './components/layout/Layout';
+import Layout from './components/layout/Layout';
 import AuthPage from './pages/AuthPage';
 import NewsPage from './pages/NewsPage';
 import TopicsPage from './pages/TopicsPage';
@@ -36,30 +36,30 @@ function App() {
             {/* 受保护的路由 */}
             <Route path="/news" element={
               <ProtectedRoute>
-                <AppLayout>
+                <Layout>
                   <NewsPage />
-                </AppLayout>
+                </Layout>
               </ProtectedRoute>
             } />
             <Route path="/topics" element={
               <ProtectedRoute>
-                <AppLayout>
+                <Layout>
                   <TopicsPage />
-                </AppLayout>
+                </Layout>
               </ProtectedRoute>
             } />
             <Route path="/updates" element={
               <ProtectedRoute>
-                <AppLayout>
+                <Layout>
                   <UpdatesPage />
-                </AppLayout>
+                </Layout>
               </ProtectedRoute>
             } />
             <Route path="/personal-log" element={
               <ProtectedRoute>
-                <AppLayout>
+                <Layout>
                   <PersonalLogPage />
-                </AppLayout>
+                </Layout>
               </ProtectedRoute>
             } />
           </Routes>

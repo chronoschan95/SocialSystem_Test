@@ -62,3 +62,22 @@
     @apply text-2xl font-bold text-gray-900 dark:text-white mb-4;
   }
 }
+
+/* 添加时钟和日历的过渡效果 */
+.calendar-transition {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* 日期hover效果 */
+.calendar-day {
+  @apply transition-colors duration-200 ease-in-out hover:bg-pink-100 dark:hover:bg-pink-900/30;
+}
+
+/* 时钟数字动画 */
+.clock-digit {
+  @apply transition-all duration-200 transform;
+}
+
+.clock-digit:hover {
+  @apply scale-110;
+}
