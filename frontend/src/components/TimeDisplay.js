@@ -74,28 +74,32 @@ const TimeDisplay = ({ isDarkMode }) => {
   };
 
   return (
-    <div className={`w-full mx-auto ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+    <div className={`w-full mx-auto ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
       {/* Digital Clock */}
       <div className="text-center mb-8">
         <div className={`text-4xl font-bold mb-2 ${isDarkMode ? 'text-pink-400' : 'text-pink-600'}`}>
           {formatTime(currentTime)}
         </div>
-        <div className="text-sm opacity-75">
+        <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
           {currentTime.toLocaleDateString('zh-CN', { weekday: 'long' })}
         </div>
       </div>
 
       {/* Calendar */}
-      <div className={`rounded-2xl p-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
+      <div className={`rounded-2xl p-4 ${isDarkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
         {/* Calendar Header */}
         <div className="flex items-center justify-between mb-4">
-          <button onClick={prevMonth} className={`p-1 rounded-full ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}>
+          <button onClick={prevMonth} className={`p-1 rounded-full ${
+            isDarkMode ? 'hover:bg-gray-600 text-gray-300' : 'hover:bg-gray-100 text-gray-600'
+          }`}>
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <span className="font-semibold">
+          <span className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
             {currentMonth.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' })}
           </span>
-          <button onClick={nextMonth} className={`p-1 rounded-full ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}>
+          <button onClick={nextMonth} className={`p-1 rounded-full ${
+            isDarkMode ? 'hover:bg-gray-600 text-gray-300' : 'hover:bg-gray-100 text-gray-600'
+          }`}>
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -103,7 +107,9 @@ const TimeDisplay = ({ isDarkMode }) => {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-1 text-center mb-2">
           {['日', '一', '二', '三', '四', '五', '六'].map(day => (
-            <div key={day} className="text-sm font-medium opacity-75">
+            <div key={day} className={`text-sm font-medium ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               {day}
             </div>
           ))}

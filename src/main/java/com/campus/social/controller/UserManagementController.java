@@ -28,4 +28,14 @@ public class UserManagementController {
     public ResponseEntity<?> toggleUserStatus(@PathVariable Long userId) {
         return ResponseEntity.ok(userManagementService.toggleUserStatus(userId));
     }
+    
+    @PostMapping
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        return ResponseEntity.ok(userManagementService.createUser(user));
+    }
+    
+    @GetMapping("/{userId}/password")
+    public ResponseEntity<?> getUserPassword(@PathVariable Long userId) {
+        return ResponseEntity.ok(userManagementService.getUserPassword(userId));
+    }
 } 
