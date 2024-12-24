@@ -21,11 +21,31 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         try {
-            System.out.println("Received registration request for user: " + user.getEmail());
+            // 检查邮箱是否已存在
+            if (authService.isEmailExists(user.getEmail())) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(new ErrorResponse("该邮箱已注册，是否跳转到登录页面？"));
+            }
+            
+            // 验证用户数据
+            if (user.getUsername() == null || user.getUsername().trim().isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(new ErrorResponse("用户名不能为空"));
+            }
+            if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(new ErrorResponse("邮箱不能为空"));
+            }
+            if (user.getPassword() == null || user.getPassword().trim().isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(new ErrorResponse("密码不能为空"));
+            }
+
             return authService.register(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body(new ErrorResponse("Registration failed: " + e.getMessage()));
+            return ResponseEntity.badRequest()
+                .body(new ErrorResponse("注册失败: " + e.getMessage()));
         }
     }
 
@@ -42,6 +62,17 @@ public class AuthController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ErrorResponse(e.getMessage()));
+        }
+    }
+
+    @GetMapping("/check-email")
+    public ResponseEntity<?> isEmailExists(@RequestParam String email) {
+        try {
+            boolean exists = authService.isEmailExists(email);
+            return ResponseEntity.ok().body(exists);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                .body(new ErrorResponse(e.getMessage()));
         }
     }
 } 

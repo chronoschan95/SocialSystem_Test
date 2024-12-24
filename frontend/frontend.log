@@ -1,4 +1,4 @@
-(node:37831) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SStarting the development server...
+(node:43564) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SStarting the development server...
 
 Compiled successfully!
 
@@ -12,98 +12,510 @@ To create a production build, use npm run build.
 
 webpack compiled successfully
 Compiling...
-Failed to compile.
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled with warnings.
 
 [eslint] 
-src/pages/[0;33mOne of your dependencies, babel-preset-react-app, is importing the
-"@babel/plugin-proposal-private-property-in-object" package without
-declaring it in its dependencies. This is currently working because
-"@babel/plugin-proposal-private-property-in-object" is already in your
-node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+src/pages/AuthPage.js
+  Line 5:28:   'Book' is defined but never used                           no-unused-vars
+  Line 5:34:   'Sparkles' is defined but never used                       no-unused-vars
+  Line 5:44:   'GraduationCap' is defined but never used                  no-unused-vars
+  Line 26:10:  'selectedAnimation' is assigned a value but never used     no-unused-vars
+  Line 26:29:  'setSelectedAnimation' is assigned a value but never used  no-unused-vars
 
-babel-preset-react-app is part of the create-react-app project, [1mwhich
-is not maintianed anymore[0;33m. It is thus unlikely that this bug will
-ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
-your devDependencies to work around this error. This will make this message
-go away.[0m
-  
-          no-undef
-  Line 122:24:  'newUser' is not defined             no-undef
-  Line 123:34:  'setNewUser' is not defined          no-undef
-  Line 123:49:  'newUser' is not defined             no-undef
-  Line 129:24:  'newUser' is not defined             no-undef
-  Line 130:34:  'setNewUser' is not defined          no-undef
-  Line 130:49:  'newUser' is not defined             no-undef
-  Line 136:21:  'setShowAddModal' is not defined     no-undef
-  Line 137:21:  'setNewUser' is not defined          no-undef
-  Line 146:28:  'handleAddUser' is not defined       no-undef
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
 
-Search for the keywords to learn more about each error.
 WARNING in [eslint] 
-src/pages/AdminPreview.js
-  Line 5:10:   'Users' is defined but never used                    no-unused-vars
-  Line 5:17:   'Newspaper' is defined but never used                no-unused-vars
-  Line 5:28:   'Sun' is defined but never used                      no-unused-vars
-  Line 5:33:   'Moon' is defined but never used                     no-unused-vars
-  Line 5:39:   'LogOut' is defined but never used                   no-unused-vars
-  Line 6:8:    'TimeDisplay' is defined but never used              no-unused-vars
-  Line 11:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
-  Line 12:10:  'activeTab' is assigned a value but never used       no-unused-vars
-  Line 12:21:  'setActiveTab' is assigned a value but never used    no-unused-vars
-  Line 14:9:   'handleLogout' is assigned a value but never used    no-unused-vars
-  Line 161:7:  'UserManagement' is assigned a value but never used  no-unused-vars
-  Line 489:7:  'NewsManagement' is assigned a value but never used  no-unused-vars
+src/pages/AuthPage.js
+  Line 5:28:   'Book' is defined but never used                           no-unused-vars
+  Line 5:34:   'Sparkles' is defined but never used                       no-unused-vars
+  Line 5:44:   'GraduationCap' is defined but never used                  no-unused-vars
+  Line 26:10:  'selectedAnimation' is assigned a value but never used     no-unused-vars
+  Line 26:29:  'setSelectedAnimation' is assigned a value but never used  no-unused-vars
 
-ERROR in [eslint] 
-src/pages/AdminPreview.js
-  Line 29:28:   'setShowAddModal' is not defined     no-undef
-  Line 54:16:   'users' is not defined               no-undef
-  Line 59:22:   'showPasswordId' is not defined      no-undef
-  Line 59:51:   'userPassword' is not defined        no-undef
-  Line 61:38:   'handleViewPassword' is not defined  no-undef
-  Line 82:40:   'handleToggleRole' is not defined    no-undef
-  Line 88:40:   'handleToggleStatus' is not defined  no-undef
-  Line 106:10:  'showAddModal' is not defined        no-undef
-  Line 115:24:  'newUser' is not defined             no-undef
-  Line 116:34:  'setNewUser' is not defined          no-undef
-  Line 116:49:  'newUser' is not defined             no-undef
-  Line 122:24:  'newUser' is not defined             no-undef
-  Line 123:34:  'setNewUser' is not defined          no-undef
-  Line 123:49:  'newUser' is not defined             no-undef
-  Line 129:24:  'newUser' is not defined             no-undef
-  Line 130:34:  'setNewUser' is not defined          no-undef
-  Line 130:49:  'newUser' is not defined             no-undef
-  Line 136:21:  'setShowAddModal' is not defined     no-undef
-  Line 137:21:  'setNewUser' is not defined          no-undef
-  Line 146:28:  'handleAddUser' is not defined       no-undef
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
 
-Search for the keywords to learn more about each error.
+[eslint] 
+src/pages/AuthPage.js
+  Line 1:27:   'useEffect' is defined but never used                      no-unused-vars
+  Line 3:14:   'Users' is defined but never used                          no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                           no-unused-vars
+  Line 26:10:  'notificationCount' is assigned a value but never used     no-unused-vars
+  Line 26:29:  'setNotificationCount' is assigned a value but never used  no-unused-vars
 
-webpack compiled with 1 error and 1 warning
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 1:27:   'useEffect' is defined but never used                      no-unused-vars
+  Line 3:14:   'Users' is defined but never used                          no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                           no-unused-vars
+  Line 26:10:  'notificationCount' is assigned a value but never used     no-unused-vars
+  Line 26:29:  'setNotificationCount' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 3:14:  'Users' is defined but never used  no-unused-vars
+  Line 4:15:  'Hash' is defined but never used   no-unused-vars
+  Line 4:33:  'Bell' is defined but never used   no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 3:14:  'Users' is defined but never used  no-unused-vars
+  Line 4:15:  'Hash' is defined but never used   no-unused-vars
+  Line 4:33:  'Bell' is defined but never used   no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 3:14:   'Users' is defined but never used                     no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                      no-unused-vars
+  Line 4:21:   'TrendingUp' is defined but never used                no-unused-vars
+  Line 4:33:   'Calendar' is defined but never used                  no-unused-vars
+  Line 4:43:   'User' is defined but never used                      no-unused-vars
+  Line 4:49:   'Radio' is defined but never used                     no-unused-vars
+  Line 9:8:    'axios' is defined but never used                     no-unused-vars
+  Line 12:9:   'navigate' is assigned a value but never used         no-unused-vars
+  Line 13:11:  'login' is assigned a value but never used            no-unused-vars
+  Line 17:10:  'isLoginMode' is assigned a value but never used      no-unused-vars
+  Line 17:23:  'setIsLoginMode' is assigned a value but never used   no-unused-vars
+  Line 18:10:  'isAdminLogin' is assigned a value but never used     no-unused-vars
+  Line 18:24:  'setIsAdminLogin' is assigned a value but never used  no-unused-vars
+  Line 19:10:  'isLoading' is assigned a value but never used        no-unused-vars
+  Line 19:21:  'setIsLoading' is assigned a value but never used     no-unused-vars
+  Line 20:10:  'formData' is assigned a value but never used         no-unused-vars
+  Line 20:20:  'setFormData' is assigned a value but never used      no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used            no-unused-vars
+  Line 25:17:  'setError' is assigned a value but never used         no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 3:14:   'Users' is defined but never used                     no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                      no-unused-vars
+  Line 4:21:   'TrendingUp' is defined but never used                no-unused-vars
+  Line 4:33:   'Calendar' is defined but never used                  no-unused-vars
+  Line 4:43:   'User' is defined but never used                      no-unused-vars
+  Line 4:49:   'Radio' is defined but never used                     no-unused-vars
+  Line 9:8:    'axios' is defined but never used                     no-unused-vars
+  Line 12:9:   'navigate' is assigned a value but never used         no-unused-vars
+  Line 13:11:  'login' is assigned a value but never used            no-unused-vars
+  Line 17:10:  'isLoginMode' is assigned a value but never used      no-unused-vars
+  Line 17:23:  'setIsLoginMode' is assigned a value but never used   no-unused-vars
+  Line 18:10:  'isAdminLogin' is assigned a value but never used     no-unused-vars
+  Line 18:24:  'setIsAdminLogin' is assigned a value but never used  no-unused-vars
+  Line 19:10:  'isLoading' is assigned a value but never used        no-unused-vars
+  Line 19:21:  'setIsLoading' is assigned a value but never used     no-unused-vars
+  Line 20:10:  'formData' is assigned a value but never used         no-unused-vars
+  Line 20:20:  'setFormData' is assigned a value but never used      no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used            no-unused-vars
+  Line 25:17:  'setError' is assigned a value but never used         no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used     no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 3:3:    'Moon' is defined but never used                     no-unused-vars
+  Line 3:9:    'Sun' is defined but never used                      no-unused-vars
+  Line 4:15:   'Hash' is defined but never used                     no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                     no-unused-vars
+  Line 14:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used           no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used     no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 25:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 115:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
 Compiling...
-Compiled successfully!
-webpack compiled successfully
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 142:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 142:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+src/pages/UpdatesPage.js
+  Line 2:10:  'Bell' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+src/pages/UpdatesPage.js
+  Line 2:10:  'Bell' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/PersonalLogPage.js
+  Line 2:47:  'Edit' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+src/pages/UpdatesPage.js
+  Line 2:10:  'Bell' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/AuthPage.js
+  Line 4:15:   'Hash' is defined but never used                  no-unused-vars
+  Line 4:33:   'Bell' is defined but never used                  no-unused-vars
+  Line 27:10:  'error' is assigned a value but never used        no-unused-vars
+  Line 124:9:  'themeStyles' is assigned a value but never used  no-unused-vars
+
+src/pages/NewsPage.js
+  Line 2:32:  'Clock' is defined but never used  no-unused-vars
+
+src/pages/PersonalLogPage.js
+  Line 2:47:  'Edit' is defined but never used  no-unused-vars
+
+src/pages/TopicsPage.js
+  Line 9:20:  'setTopics' is assigned a value but never used  no-unused-vars
+
+src/pages/UpdatesPage.js
+  Line 2:10:  'Bell' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning

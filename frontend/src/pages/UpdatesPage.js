@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Bell, Clock, MessageSquare, ThumbsUp } from 'lucide-react';
+import BackgroundAnimation from '../components/shared/BackgroundAnimation';
+import Button from '../components/shared/Button';
+import { useTheme } from '../context/ThemeContext';
 
 const UpdatesPage = () => {
+    const { isDarkMode } = useTheme();
     const [updates] = useState([
         {
             id: 1,
@@ -22,40 +26,54 @@ const UpdatesPage = () => {
     ]);
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">最新动态</h2>
-            <div className="space-y-6">
-                {updates.map(update => (
-                    <div key={update.id} className="bg-white rounded-2xl shadow-lg p-6">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-                                <span className="text-pink-600 font-medium">
-                                    {update.author[0]}
-                                </span>
-                            </div>
-                            <div>
-                                <h3 className="font-medium text-gray-800">{update.author}</h3>
-                                <div className="flex items-center gap-2 text-sm text-gray-500">
-                                    <Clock className="w-4 h-4" />
-                                    <span>{update.time}</span>
+        <div className={`min-h-screen relative ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+        }`}>
+            <BackgroundAnimation />
+            
+            <div className="max-w-4xl mx-auto p-6 relative z-10">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className={`text-2xl font-semibold ${
+                        isDarkMode ? 'text-gray-100' : 'text-gray-800'
+                    }`}>最新动态</h2>
+                    <Button variant="primary" size="md">
+                        发布动态
+                    </Button>
+                </div>
+                
+                <div className="space-y-6">
+                    {updates.map(update => (
+                        <div key={update.id} className="bg-white rounded-2xl shadow-lg p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                                    <span className="text-pink-600 font-medium">
+                                        {update.author[0]}
+                                    </span>
+                                </div>
+                                <div>
+                                    <h3 className="font-medium text-gray-800">{update.author}</h3>
+                                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                                        <Clock className="w-4 h-4" />
+                                        <span>{update.time}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <p className="text-gray-600 mb-4">{update.content}</p>
+                            <p className="text-gray-600 mb-4">{update.content}</p>
 
-                        <div className="flex items-center gap-6 text-gray-500">
-                            <button className="flex items-center gap-2 hover:text-pink-500">
-                                <ThumbsUp className="w-5 h-5" />
-                                <span>{update.likes}</span>
-                            </button>
-                            <button className="flex items-center gap-2 hover:text-pink-500">
-                                <MessageSquare className="w-5 h-5" />
-                                <span>{update.comments}</span>
-                            </button>
+                            <div className="flex items-center gap-6 text-gray-500">
+                                <button className="flex items-center gap-2 hover:text-pink-500">
+                                    <ThumbsUp className="w-5 h-5" />
+                                    <span>{update.likes}</span>
+                                </button>
+                                <button className="flex items-center gap-2 hover:text-pink-500">
+                                    <MessageSquare className="w-5 h-5" />
+                                    <span>{update.comments}</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

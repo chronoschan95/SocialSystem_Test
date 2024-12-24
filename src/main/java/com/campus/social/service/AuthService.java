@@ -58,4 +58,9 @@ public class AuthService {
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
+
+    public boolean isEmailExists(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null;
+    }
 }
