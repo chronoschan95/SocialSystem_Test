@@ -1,4 +1,4 @@
-(node:27230) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SStarting the development server...
+(node:37831) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SStarting the development server...
 
 Compiled successfully!
 
@@ -12,24 +12,14 @@ To create a production build, use npm run build.
 
 webpack compiled successfully
 Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-k at any time[0;33m.
+Failed to compile.
+
+[eslint] 
+src/pages/[0;33mOne of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
 
 babel-preset-react-app is part of the create-react-app project, [1mwhich
 is not maintianed anymore[0;33m. It is thus unlikely that this bug will
@@ -37,3 +27,83 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+          no-undef
+  Line 122:24:  'newUser' is not defined             no-undef
+  Line 123:34:  'setNewUser' is not defined          no-undef
+  Line 123:49:  'newUser' is not defined             no-undef
+  Line 129:24:  'newUser' is not defined             no-undef
+  Line 130:34:  'setNewUser' is not defined          no-undef
+  Line 130:49:  'newUser' is not defined             no-undef
+  Line 136:21:  'setShowAddModal' is not defined     no-undef
+  Line 137:21:  'setNewUser' is not defined          no-undef
+  Line 146:28:  'handleAddUser' is not defined       no-undef
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/AdminPreview.js
+  Line 5:10:   'Users' is defined but never used                    no-unused-vars
+  Line 5:17:   'Newspaper' is defined but never used                no-unused-vars
+  Line 5:28:   'Sun' is defined but never used                      no-unused-vars
+  Line 5:33:   'Moon' is defined but never used                     no-unused-vars
+  Line 5:39:   'LogOut' is defined but never used                   no-unused-vars
+  Line 6:8:    'TimeDisplay' is defined but never used              no-unused-vars
+  Line 11:23:  'toggleDarkMode' is assigned a value but never used  no-unused-vars
+  Line 12:10:  'activeTab' is assigned a value but never used       no-unused-vars
+  Line 12:21:  'setActiveTab' is assigned a value but never used    no-unused-vars
+  Line 14:9:   'handleLogout' is assigned a value but never used    no-unused-vars
+  Line 161:7:  'UserManagement' is assigned a value but never used  no-unused-vars
+  Line 489:7:  'NewsManagement' is assigned a value but never used  no-unused-vars
+
+ERROR in [eslint] 
+src/pages/AdminPreview.js
+  Line 29:28:   'setShowAddModal' is not defined     no-undef
+  Line 54:16:   'users' is not defined               no-undef
+  Line 59:22:   'showPasswordId' is not defined      no-undef
+  Line 59:51:   'userPassword' is not defined        no-undef
+  Line 61:38:   'handleViewPassword' is not defined  no-undef
+  Line 82:40:   'handleToggleRole' is not defined    no-undef
+  Line 88:40:   'handleToggleStatus' is not defined  no-undef
+  Line 106:10:  'showAddModal' is not defined        no-undef
+  Line 115:24:  'newUser' is not defined             no-undef
+  Line 116:34:  'setNewUser' is not defined          no-undef
+  Line 116:49:  'newUser' is not defined             no-undef
+  Line 122:24:  'newUser' is not defined             no-undef
+  Line 123:34:  'setNewUser' is not defined          no-undef
+  Line 123:49:  'newUser' is not defined             no-undef
+  Line 129:24:  'newUser' is not defined             no-undef
+  Line 130:34:  'setNewUser' is not defined          no-undef
+  Line 130:49:  'newUser' is not defined             no-undef
+  Line 136:21:  'setShowAddModal' is not defined     no-undef
+  Line 137:21:  'setNewUser' is not defined          no-undef
+  Line 146:28:  'handleAddUser' is not defined       no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully

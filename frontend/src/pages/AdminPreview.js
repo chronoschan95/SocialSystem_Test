@@ -126,7 +126,12 @@ const UserManagement = ({ isDarkMode }) => {
   // 获取用户列表
   const fetchUsers = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/admin/users');
+      const response = await fetch('http://localhost:8080/api/admin/users', {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -192,24 +197,46 @@ const UserManagement = ({ isDarkMode }) => {
   };
 
   // 添加用户
-  const handleAddUser = async (e) => {
-    e.preventDefault();
+  const handleAddUser = async () => {
     try {
+      const userData = {
+        username: document.querySelector('input[placeholder="用户名"]').value,
+        email: document.querySelector('input[placeholder="邮箱"]').value,
+        password: document.querySelector('input[placeholder="密码"]').value
+      };
+
+      console.log('Sending user data:', userData);
+
       const response = await fetch('http://localhost:8080/api/admin/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newUser),
+        credentials: 'include',
+        body: JSON.stringify(userData)
       });
-      
-      if (response.ok) {
-        await fetchUsers();
-        setShowAddModal(false);
-        setNewUser({ username: '', email: '', password: '' });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || '创建用户失败');
       }
+
+      const result = await response.json();
+      console.log('User created:', result);
+
+      // 刷新用户列表
+      fetchUsers();
+      // 关闭模态框
+      setShowAddModal(false);
+      // 清空表单
+      setNewUser({
+        username: '',
+        email: '',
+        password: ''
+      });
     } catch (error) {
-      console.error('添加用户失败:', error);
+      console.error('Error:', error);
+      alert(error.message);
     }
   };
 
@@ -260,75 +287,71 @@ const UserManagement = ({ isDarkMode }) => {
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">密码</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">角色</th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">状态</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">操作</th>
+              <th className="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">操作</th>
             </tr>
           </thead>
           <tbody className={`divide-y ${isDarkMode ? 'divide-gray-700' : 'divide-gray-200'}`}>
             {filteredUsers.map(user => (
-              <tr key={user.id} className={user.deleted ? 'line-through opacity-50' : ''}>
-                <td className="px-6 py-4 whitespace-nowrap">{user.username}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center gap-2">
-                    <span>{showPasswordId === user.id ? userPassword : '••••••'}</span>
-                    <button
-                      onClick={() => handleViewPassword(user.id)}
-                      className={`p-1 rounded-full ${
-                        isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100'
-                      }`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                    </button>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <tr key={user.id} className={user.deleted ? 'line-through opacity-50' : ''}>
+                  <td className="px-6 py-4 whitespace-nowrap">{user.username}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center gap-2">
+                      <span>{showPasswordId === user.id ? userPassword : '••••••'}</span>
+                      <button
+                          onClick={() => handleViewPassword(user.id)}
+                          className={`p-1 rounded-full ${
+                              isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100'
+                          }`}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    user.admin 
-                      ? (isDarkMode ? 'bg-pink-900 text-pink-200' : 'bg-pink-100 text-pink-800')
-                      : (isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-800')
+                      user.admin
+                          ? (isDarkMode ? 'bg-pink-900 text-pink-200' : 'bg-pink-100 text-pink-800')
+                          : (isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-800')
                   }`}>
                     {user.admin ? '管理员' : '普通用户'}
                   </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    user.deleted
-                      ? (isDarkMode ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800')
-                      : (isDarkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800')
+                      user.deleted
+                          ? (isDarkMode ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800')
+                          : (isDarkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800')
                   }`}>
                     {user.deleted ? '已删除' : '正常'}
                   </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => handleToggleRole(user.id)}
-                      className={`px-3 py-1 rounded-lg text-sm ${
-                        isDarkMode
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                          : 'bg-blue-100 hover:bg-blue-200 text-blue-800'
-                      }`}
-                    >
-                      {user.admin ? '设为普通用户' : '设为管理员'}
-                    </button>
-                    <button
-                      onClick={() => handleToggleStatus(user.id)}
-                      className={`px-3 py-1 rounded-lg text-sm ${
-                        user.deleted
-                          ? (isDarkMode ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-green-100 hover:bg-green-200 text-green-800')
-                          : (isDarkMode ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-red-100 hover:bg-red-200 text-red-800')
-                      }`}
-                    >
-                      {user.deleted ? '恢复' : '删除'}
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <div className="flex flex-col items-center space-y-2">
+                      <button onClick={() => handleToggleRole(user.id)}
+                              className={`w-28 px-3 py-1 rounded-lg text-sm text-center ${
+                                  isDarkMode
+                                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                                      : 'bg-blue-100 hover:bg-blue-200 text-blue-800'
+                              }`}>
+                        {user.admin ? '设为普通用户' : '设为管理员'}
+                      </button>
+                      <button onClick={() => handleToggleStatus(user.id)}
+                              className={`w-28 px-3 py-1 rounded-lg text-sm text-center ${
+                                  user.deleted
+                                      ? (isDarkMode ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-green-100 hover:bg-green-200 text-green-800')
+                                      : (isDarkMode ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-red-100 hover:bg-red-200 text-red-800')
+                              }`}>
+                        {user.deleted ? '恢复' : '删除'}
+                      </button>
+                    </div>
+                  </td>
+                </tr>
             ))}
           </tbody>
         </table>
@@ -336,30 +359,30 @@ const UserManagement = ({ isDarkMode }) => {
 
       {/* 添加用户模态框 */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className={`rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 w-96`}>
-            <h3 className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              添加新用户
-            </h3>
-            <form onSubmit={handleAddUser}>
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="用户名"
-                  value={newUser.username}
-                  onChange={(e) => setNewUser({...newUser, username: e.target.value})}
-                  className={`w-full px-4 py-2 rounded-lg ${
-                    isDarkMode 
-                      ? 'bg-gray-700 text-gray-200 placeholder-gray-400' 
-                      : 'bg-gray-100 text-gray-800 placeholder-gray-500'
-                  }`}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="邮箱"
-                  value={newUser.email}
-                  onChange={(e) => setNewUser({...newUser, email: e.target.value})}
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div className={`rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 w-96`}>
+              <h3 className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+                添加新用户
+              </h3>
+              <form onSubmit={() => handleAddUser(newUser)}>
+                <div className="space-y-4">
+                  <input
+                      type="text"
+                      placeholder="用户名"
+                      value={newUser.username}
+                      onChange={(e) => setNewUser({...newUser, username: e.target.value})}
+                      className={`w-full px-4 py-2 rounded-lg ${
+                          isDarkMode
+                              ? 'bg-gray-700 text-gray-200 placeholder-gray-400'
+                              : 'bg-gray-100 text-gray-800 placeholder-gray-500'
+                      }`}
+                      required
+                  />
+                  <input
+                      type="email"
+                      placeholder="邮箱"
+                      value={newUser.email}
+                      onChange={(e) => setNewUser({...newUser, email: e.target.value})}
                   className={`w-full px-4 py-2 rounded-lg ${
                     isDarkMode 
                       ? 'bg-gray-700 text-gray-200 placeholder-gray-400' 
