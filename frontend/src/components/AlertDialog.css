@@ -1,0 +1,91 @@
+.alert-dialog-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.alert-dialog {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 max-w-md w-full mx-4 transform transition-all;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-dialog-dark {
+  @apply bg-gray-800 text-white;
+}
+
+.alert-dialog-light {
+  @apply bg-white text-gray-800;
+}
+
+.alert-dialog-title {
+  @apply text-lg font-medium mb-4 text-pink-500 dark:text-pink-400;
+}
+
+.alert-dialog-content {
+  @apply text-sm mb-6 text-gray-600 dark:text-gray-300;
+}
+
+.alert-dialog-buttons {
+  @apply flex justify-end space-x-4;
+}
+
+.alert-button {
+  @apply px-4 py-2 rounded-md text-sm font-medium transition-all duration-200;
+}
+
+/* 主要按钮样式 - 使用粉色主题 */
+.alert-button-primary {
+  @apply bg-pink-500 text-white hover:bg-pink-600 
+         dark:bg-pink-600 dark:hover:bg-pink-700;
+}
+
+/* 次要按钮样式 */
+.alert-button-secondary {
+  @apply bg-gray-100 text-gray-800 hover:bg-gray-200 
+         dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+}
+
+/* 警告类型按钮样式 */
+.alert-button-warning {
+  @apply bg-pink-500 text-white hover:bg-pink-600 
+         dark:bg-pink-600 dark:hover:bg-pink-700;
+}
+
+/* 错误类型按钮样式 */
+.alert-button-error {
+  @apply bg-pink-100 text-pink-600 hover:bg-pink-200 
+         dark:bg-pink-900/30 dark:text-pink-400 dark:hover:bg-pink-900/50;
+}
+
+/* 加载动画 */
+.loading-dots {
+  @apply inline-flex items-center;
+}
+
+.loading-dots span {
+  @apply w-1 h-1 bg-current rounded-full mx-0.5;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}

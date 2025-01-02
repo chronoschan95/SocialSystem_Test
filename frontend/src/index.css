@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 添加全局过渡效果 */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* 暗色模式过渡 */
+.dark {
+  @apply transition-colors duration-200;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-200;
+  }
+
+  /* 黑暗模式全局样式 */
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  /* 输入框样式 */
+  input, textarea {
+    @apply bg-white dark:bg-gray-800 dark:text-white border-gray-300 dark:border-gray-700;
+  }
+
+  /* 卡片样式 */
+  .card {
+    @apply bg-white dark:bg-gray-800 shadow-sm;
+  }
+
+  /* 按钮样式 */
+  .btn {
+    @apply bg-pink-600 hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-800 text-white;
+  }
+
+  /* 导航栏样式 */
+  .nav-item {
+    @apply text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400;
+  }
+
+  /* 侧边栏样式 */
+  .sidebar {
+    @apply bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700;
+  }
+}
+
+/* 自定义组件样式 */
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent;
+  }
+
+  .card-container {
+    @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mb-4;
+  }
+}
+/* 添加时钟和日历的过渡效果 */
+.calendar-transition {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* 日期hover效果 */
+.calendar-day {
+  @apply transition-colors duration-200 ease-in-out hover:bg-pink-100 dark:hover:bg-pink-900/30;
+}
+
+/* 时钟数字动画 */
+.clock-digit {
+  @apply transition-all duration-200 transform;
+}
+
+.clock-digit:hover {
+  @apply scale-110;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* 添加页面过渡效果 */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.page-transition {
+  animation: fadeSlideIn 0.3s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
