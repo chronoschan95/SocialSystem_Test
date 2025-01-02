@@ -70,4 +70,30 @@ public class AuthService {
     public boolean isUsernameExists(String username) {
         return userRepository.findByUsername(username) != null;
     }
+
+    public User getCurrentUser(Long userId) {
+        return userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("用户不存在"));
+    }
+
+    public User getUserByEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            System.out.println("收到空的邮箱请求");
+            throw new RuntimeException("邮箱不能为空");
+        }
+        
+        System.out.println("正在查找用户，邮箱: " + email);
+        
+        User user = userRepository.findUserDetailsByEmail(email.trim());
+        
+        if (user != null) {
+            System.out.println("找到用户: " + user.getUsername() + ", ID: " + user.getId());
+            // 确保清除敏感信息
+            user.setPassword(null);
+            return user;
+        } else {
+            System.out.println("未找到用户，邮箱: " + email);
+            throw new RuntimeException("用户不存在或已被禁用");
+        }
+    }
 }

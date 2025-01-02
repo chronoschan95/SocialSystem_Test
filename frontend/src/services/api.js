@@ -14,7 +14,16 @@ const api = axios.create({
 
 api.interceptors.request.use(
     config => {
-        console.log('Sending request to:', config.url, config.data);
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        console.log('API Request:', {
+            url: config.url,
+            method: config.method,
+            headers: config.headers,
+            data: config.data
+        });
         return config;
     },
     error => {
@@ -25,28 +34,23 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
     response => {
-        console.log('Received response:', response.data);
+        console.log('API Response:', {
+            url: response.config.url,
+            status: response.status,
+            data: response.data
+        });
         return response;
     },
     error => {
-        if (error.code === 'ECONNABORTED') {
-            console.error('Request timeout');
-            return Promise.reject(new Error('请求超时，请稍后重试'));
-        }
-        
-        if (!error.response) {
-            console.error('Network error:', error);
-            return Promise.reject(new Error('网络连接失败，请检查后端服务是否启动'));
-        }
-
-        console.error('Response error:', error.response);
+        console.error('Response error:', error.response || error);
         return Promise.reject(error);
     }
 );
 
 export const authAPI = {
     login: (credentials) => api.post('/auth/login', credentials),
-    register: (userData) => api.post('/auth/register', userData)
+    register: (userData) => api.post('/auth/register', userData),
+    getCurrentUser: () => api.get('/auth/current-user')
 };
 
 export const newsAPI = {

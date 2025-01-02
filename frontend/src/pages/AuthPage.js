@@ -8,6 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 import AlertDialog from '../components/AlertDialog';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -43,6 +44,21 @@ const AuthPage = () => {
     onConfirm: null,
     onCancel: null
   });
+
+  // 添加动画配置
+  const pageTransition = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+    transition: { duration: 0.3 }
+  };
+
+  const formTransition = {
+    initial: { opacity: 0, x: isLoginMode ? -20 : 20 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: isLoginMode ? 20 : -20 },
+    transition: { duration: 0.3 }
+  };
 
   // 优化动画效果
   useEffect(() => {
@@ -202,7 +218,25 @@ const AuthPage = () => {
     return true;
   };
 
-  // 处理表单提交
+  // 处理登录成功
+  const handleLoginSuccess = (data) => {
+    setAlertConfig({
+      title: '登录成功',
+      message: '正在跳转...',
+      type: 'success',
+      confirmText: '确定',
+      onConfirm: () => {
+        if (data.user.admin && isAdminLogin) {
+          navigate('/admin');
+        } else {
+          navigate('/home');
+        }
+      }
+    });
+    setShowAlert(true);
+  };
+
+  // 修改表单提交处理
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -215,7 +249,6 @@ const AuthPage = () => {
     setIsLoading(true);
     try {
       if (isLoginMode) {
-        // 登录逻辑
         const loginData = {
           email: formData.email.trim(),
           password: formData.password,
@@ -237,29 +270,27 @@ const AuthPage = () => {
           throw new Error(data.message || '登录失败');
         }
 
-        // 登录成功
-        login(data);
+        // 确保在存储之前数据是完整的
+        if (data.user && data.user.email) {
+          localStorage.setItem('email', data.user.email);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          login(data);
 
-        // 根据用户类型和登录模式决定跳转
-        if (data.user.admin) { // 是管理员账号
-          if (isAdminLogin) { // 以管理员身份登录
-            navigate('/admin');
+          if (isAdminLogin && !data.user.admin) {
+            setAlertConfig({
+              title: '权限不足',
+              message: '您的账号没有管理员权限',
+              type: 'error',
+              confirmText: '确定'
+            });
+            setShowAlert(true);
             return;
           }
+          
+          handleLoginSuccess(data);
+        } else {
+          throw new Error('登录响应中缺少用户信息');
         }
-        
-        if (isAdminLogin && !data.user.admin) {
-          setAlertConfig({
-            title: '权限不足',
-            message: '您的账号没有管理员权限',
-            type: 'error',
-            confirmText: '确定'
-          });
-          setShowAlert(true);
-          return;
-        }
-        
-        navigate('/home');
       } else {
         // 修改后的注册逻辑
         const registerData = {
@@ -321,7 +352,13 @@ const AuthPage = () => {
     } focus:ring-2 focus:ring-pink-500 transition-colors duration-300`;
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <motion.div 
+      className="min-h-screen relative overflow-hidden"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageTransition}
+    >
       <div 
         className={`absolute inset-0 transition-all duration-500 ease-in-out ${
           isDarkMode 
@@ -390,142 +427,162 @@ const AuthPage = () => {
 
         {/* 主内容区域 */}
         <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-md w-full space-y-8">
-            {/* 标题部分 */}
-            <div className="text-center">
-              <h1 className={`text-3xl font-allegro font-bold mb-8 ${
-                isDarkMode ? 'text-pink-200' : 'text-gray-900'
-              } transition-colors duration-300`}>
-                Campus Private Domain Platform
-                <span className={`block text-sm ${
-                  isDarkMode ? 'text-pink-300/70' : 'text-gray-600'
-                } mt-1 transition-colors duration-300`}>
-                  —Made by Chronos
-                </span>
-              </h1>
-            </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={isLoginMode ? 'login' : 'register'}
+              className="max-w-md w-full space-y-8"
+              {...formTransition}
+            >
+              {/* 标题部分 */}
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <h1 className={`text-3xl font-allegro font-bold mb-8 ${
+                  isDarkMode ? 'text-pink-200' : 'text-gray-900'
+                } transition-colors duration-300`}>
+                  Campus Private Domain Platform
+                  <span className={`block text-sm ${
+                    isDarkMode ? 'text-pink-300/70' : 'text-gray-600'
+                  } mt-1 transition-colors duration-300`}>
+                    —Made by Chronos
+                  </span>
+                </h1>
+              </motion.div>
 
-            {/* 认证表单卡片 */}
-            <div className={`${
-              isDarkMode 
-                ? 'bg-gray-800/90 border border-pink-900/30' 
-                : 'bg-white/90'
-            } p-8 rounded-xl shadow-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300`}>
-              <h2 className={`text-2xl font-bold text-center mb-8 ${
-                isDarkMode ? 'text-pink-200' : 'text-gray-800'
-              }`}>
-                {isLoginMode ? '登录账户' : '注册账户'}
-              </h2>
+              {/* 认证表单卡片 */}
+              <motion.div 
+                className={`${
+                  isDarkMode 
+                    ? 'bg-gray-800/90 border border-pink-900/30' 
+                    : 'bg-white/90'
+                } p-8 rounded-xl shadow-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h2 className={`text-2xl font-bold text-center mb-8 ${
+                  isDarkMode ? 'text-pink-200' : 'text-gray-800'
+                }`}>
+                  {isLoginMode ? '登录账户' : '注册账户'}
+                </h2>
 
-              {/* 表单输入框样式更新 */}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {!isLoginMode && (
+                {/* 表单输入框样式更新 */}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {!isLoginMode && (
+                    <div className="relative">
+                      <Users className={`w-5 h-5 ${
+                        isDarkMode ? 'text-pink-400' : 'text-gray-400'
+                      } absolute left-3 top-3`} />
+                      <input
+                        name="username"
+                        type="text"
+                        required
+                        className={inputClassName}
+                        placeholder="用户名"
+                        value={formData.username}
+                        onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                        disabled={isLoading}
+                      />
+                    </div>
+                  )}
+
                   <div className="relative">
-                    <Users className={`w-5 h-5 ${
+                    <Mail className={`w-5 h-5 ${
                       isDarkMode ? 'text-pink-400' : 'text-gray-400'
                     } absolute left-3 top-3`} />
                     <input
-                      name="username"
-                      type="text"
+                      name="email"
+                      type="email"
                       required
                       className={inputClassName}
-                      placeholder="用户名"
-                      value={formData.username}
-                      onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                      placeholder="邮箱地址"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       disabled={isLoading}
                     />
                   </div>
-                )}
 
-                <div className="relative">
-                  <Mail className={`w-5 h-5 ${
-                    isDarkMode ? 'text-pink-400' : 'text-gray-400'
-                  } absolute left-3 top-3`} />
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className={inputClassName}
-                    placeholder="邮箱地址"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    disabled={isLoading}
-                  />
-                </div>
-
-                <div className="relative">
-                  <Lock className={`w-5 h-5 ${
-                    isDarkMode ? 'text-pink-400' : 'text-gray-400'
-                  } absolute left-3 top-3`} />
-                  <input
-                    name="password"
-                    type="password"
-                    required
-                    className={inputClassName}
-                    placeholder="密码"
-                    value={formData.password}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    disabled={isLoading}
-                  />
-                </div>
-
-                {isLoginMode && (
-                  <div className="flex items-center">
+                  <div className="relative">
+                    <Lock className={`w-5 h-5 ${
+                      isDarkMode ? 'text-pink-400' : 'text-gray-400'
+                    } absolute left-3 top-3`} />
                     <input
-                      id="admin-login"
-                      name="admin-login"
-                      type="checkbox"
-                      className="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded"
-                      checked={isAdminLogin}
-                      onChange={(e) => setIsAdminLogin(e.target.checked)}
+                      name="password"
+                      type="password"
+                      required
+                      className={inputClassName}
+                      placeholder="密码"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       disabled={isLoading}
                     />
-                    <label
-                      htmlFor="admin-login"
-                      className={`ml-2 block text-sm ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-900'
-                      }`}
-                    >
-                      管理员登录
-                    </label>
                   </div>
-                )}
 
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className={`w-full py-3 px-4 rounded-lg text-white ${
-                    isDarkMode
-                      ? 'bg-gradient-to-r from-pink-800 to-pink-900 hover:from-pink-700 hover:to-pink-800'
-                      : 'bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700'
-                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transform hover:scale-102 transition-all duration-300`}
-                >
-                  {isLoading ? '处理中...' : (isLoginMode ? '登录' : '注册')}
-                </button>
-              </form>
+                  {isLoginMode && (
+                    <div className="flex items-center">
+                      <input
+                        id="admin-login"
+                        name="admin-login"
+                        type="checkbox"
+                        className="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded"
+                        checked={isAdminLogin}
+                        onChange={(e) => setIsAdminLogin(e.target.checked)}
+                        disabled={isLoading}
+                      />
+                      <label
+                        htmlFor="admin-login"
+                        className={`ml-2 block text-sm ${
+                          isDarkMode ? 'text-gray-300' : 'text-gray-900'
+                        }`}
+                      >
+                        管理员登录
+                      </label>
+                    </div>
+                  )}
 
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => {
-                    setIsLoginMode(!isLoginMode);
-                    setIsAdminLogin(false);
-                    setError('');
-                    setFormData({
-                      username: '',
-                      email: '',
-                      password: ''
-                    });
-                  }}
-                  disabled={isLoading}
-                  className={`${
-                    isDarkMode ? 'text-pink-400 hover:text-pink-300' : 'text-pink-500 hover:text-pink-600'
-                  } transition-colors duration-300`}
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className={`w-full py-3 px-4 rounded-lg text-white ${
+                      isDarkMode
+                        ? 'bg-gradient-to-r from-pink-800 to-pink-900 hover:from-pink-700 hover:to-pink-800'
+                        : 'bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700'
+                    } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transform hover:scale-102 transition-all duration-300`}
+                  >
+                    {isLoading ? '处理中...' : (isLoginMode ? '登录' : '注册')}
+                  </button>
+                </form>
+
+                <motion.div 
+                  className="mt-6 text-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {isLoginMode ? '没有账户？点击注册' : '已有账户？点击登录'}
-                </button>
-              </div>
-            </div>
-          </div>
+                  <button
+                    onClick={() => {
+                      setIsLoginMode(!isLoginMode);
+                      setIsAdminLogin(false);
+                      setError('');
+                      setFormData({
+                        username: '',
+                        email: '',
+                        password: ''
+                      });
+                    }}
+                    disabled={isLoading}
+                    className={`${
+                      isDarkMode ? 'text-pink-400 hover:text-pink-300' : 'text-pink-500 hover:text-pink-600'
+                    } transition-colors duration-300`}
+                  >
+                    {isLoginMode ? '没有账户？点击注册' : '已有账户？点击登录'}
+                  </button>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
@@ -573,15 +630,9 @@ const AuthPage = () => {
       <AlertDialog
         isOpen={showAlert}
         onClose={() => setShowAlert(false)}
-        title={alertConfig.title}
-        message={alertConfig.message}
-        type={alertConfig.type}
-        confirmText={alertConfig.confirmText}
-        cancelText={alertConfig.cancelText}
-        onConfirm={alertConfig.onConfirm}
-        onCancel={alertConfig.onCancel}
+        {...alertConfig}
       />
-    </div>
+    </motion.div>
   );
 };
 

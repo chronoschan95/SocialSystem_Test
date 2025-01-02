@@ -8,13 +8,34 @@ import AlertDialog from '../components/AlertDialog';
 
 const AdminPreview = () => {
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { logout, user, getCurrentUser } = useAuth();
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const [username, setUsername] = useState('');
   const [activeTab, setActiveTab] = useState('users'); // 'users' or 'news'
 
   // 添加 AlertDialog 相关状态
   const [showAlert, setShowAlert] = useState(false);
   const [alertConfig, setAlertConfig] = useState({});
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        if (user) {
+          setUsername(user.username);
+        } else {
+          const currentUser = await getCurrentUser();
+          if (currentUser) {
+            setUsername(currentUser.username);
+          }
+        }
+      } catch (error) {
+        console.error('获取用户信息失败:', error);
+        setUsername('Guest');
+      }
+    };
+
+    fetchUserInfo();
+  }, [user, getCurrentUser]);
 
   const handleLogout = () => {
     setAlertConfig({
@@ -83,8 +104,12 @@ const AdminPreview = () => {
         {/* 顶部导航栏 */}
         <div className={`fixed top-0 right-0 left-64 z-10 h-16 px-6 
           ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} 
-          border-b flex items-center justify-end`}
+          border-b flex items-center justify-between`}
         >
+          <div className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+            Welcome back, {username}
+          </div>
+
           <div className="flex items-center gap-4">
             <button
               onClick={toggleDarkMode}
